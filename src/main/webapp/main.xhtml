@@ -9,37 +9,40 @@
    <meta charset="UTF-8"/>
    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <link rel="stylesheet" href="css/main.css"/>
+   <link rel="stylesheet" href="css/index.css"/>
    <title>LAB3</title>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!--   <script src="src/js/time.js"></script>-->
+   <script src="js/timeUpdater.js"></script>
 </h:head>
 <h:body>
-   <header>
-      <div class="corner author-info">
-         <p>Povetin Ilya</p>
-         <p>P32121</p>
-      </div>
-      <div class="project-name">
-         <h1>Laboratory work #3</h1>
-      </div>
-      <div class="corner variant">
-
-         <h:link outcome="goToIndex">
-            Main page
-         </h:link>
-
-         <p>Variant: 1214</p>
-      </div>
-   </header>
-   <div class="time-wrapper">
-      <div class="card">
-         <p class="datetime">
-            <span class="datetime_date"> <!-- Date from JS --> </span>
-            <br/>
-            <span class="datetime_time"> <!-- Time from JS --> </span>
-         </p>
-      </div>
-   </div>
+   <table class="wrapper">
+      <tbody>
+      <tr>
+         <td class="header">
+            emented
+            1214
+            P32121
+            <h:link outcome="goToIndex">
+               Main page
+            </h:link>
+         </td>
+      </tr>
+      <tr>
+         <td class='horizontal-separator'></td>
+      </tr>
+      <tr>
+         <td>
+            <table class="time-wrapper">
+                  <tr>
+                     <td class="datetime_date"> <!-- Date from JS --> </td>
+                  </tr>
+               <tr>
+                  <td class="datetime_time"> <!-- Time from JS --> </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      </tbody>
+   </table>
 </h:body>
 </html>

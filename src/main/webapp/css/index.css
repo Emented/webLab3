@@ -144,7 +144,8 @@ body {
 input[type="submit"] {
     width: 90%;
     height: 30px;
-    margin-left: 3%;
+    margin-top: 1%;
+    /*margin-left: 3%;*/
     font-size: 16px;
     background-color: #ff9400;
     border-radius: 4px;
@@ -204,4 +205,10 @@ svg .green {
 
 svg .red {
     fill: red;
+}
+
+.time-wrapper {
+    width: 100%;
+    font-size: 70px;
+    font-family: monospace;
 }

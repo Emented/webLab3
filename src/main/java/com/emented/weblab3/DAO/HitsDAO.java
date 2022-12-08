@@ -1,10 +1,10 @@
-package com.emented.weblab3.repository;
+package com.emented.weblab3.DAO;
 
 import com.emented.weblab3.DTO.HitDTO;
 
 import java.util.List;
 
-public interface HitsRepository {
+public interface HitsDAO {
 
     void clearTable();
     List<HitDTO> findAll();

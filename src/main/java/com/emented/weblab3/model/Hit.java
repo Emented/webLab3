@@ -1,7 +1,7 @@
 package com.emented.weblab3.model;
 
 import com.emented.weblab3.DTO.HitDTO;
-import com.emented.weblab3.repository.HitsRepository;
+import com.emented.weblab3.DAO.HitsDAO;
 import com.emented.weblab3.service.HitChecker;
 import lombok.Data;
 import org.jooq.Converter;
@@ -25,8 +25,8 @@ public class Hit implements Serializable {
     @ManagedProperty("#{hitCheckerImpl}")
     private HitChecker hitChecker;
 
-    @ManagedProperty("#{jooqHitsRepository}")
-    private HitsRepository hitsRepository;
+    @ManagedProperty("#{jooqHitsDAO}")
+    private HitsDAO hitsDAO;
 
     @ManagedProperty("#{hitConverter}")
     private Converter<HitDTO, Hit> hitConverter;
@@ -44,7 +44,7 @@ public class Hit implements Serializable {
         status = hitChecker.checkHit(this);
         saveTimezone(timezone);
         executionTime = System.currentTimeMillis() - checkDate.toEpochMilli();
-        hitsRepository.save(hitConverter.to(this));
+        hitsDAO.save(hitConverter.to(this));
     }
 
     public ZonedDateTime getCheckDateWithTimeZone() {

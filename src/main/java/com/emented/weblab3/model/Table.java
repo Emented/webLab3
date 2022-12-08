@@ -1,8 +1,7 @@
 package com.emented.weblab3.model;
 
 import com.emented.weblab3.DTO.HitDTO;
-import com.emented.weblab3.repository.HitsRepository;
-import com.emented.weblab3.service.SessionIdGetter;
+import com.emented.weblab3.DAO.HitsDAO;
 import lombok.Data;
 import org.jooq.Converter;
 
@@ -18,8 +17,8 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 public class Table implements Serializable {
 
-    @ManagedProperty("#{jooqHitsRepository}")
-    private HitsRepository hitsRepository;
+    @ManagedProperty("#{jooqHitsDAO}")
+    private HitsDAO hitsDAO;
 
     @ManagedProperty("#{hitConverter}")
     private Converter<HitDTO, Hit> hitConverter;
@@ -29,12 +28,12 @@ public class Table implements Serializable {
     Double currentR = 1D;
 
     public List<Hit> getAllHits() {
-        hitList = hitsRepository.findAll().stream().map(hitDTO -> hitConverter.from(hitDTO)).toList();
+        hitList = hitsDAO.findAll().stream().map(hitDTO -> hitConverter.from(hitDTO)).toList();
         return hitList;
     }
 
     public List<Hit> gitHitsByR() {
-        hitList = hitsRepository.findAll().stream().map(hitDTO -> hitConverter.from(hitDTO)).toList();
+        hitList = hitsDAO.findAll().stream().map(hitDTO -> hitConverter.from(hitDTO)).toList();
         return hitList.stream().filter(hit -> Objects.equals(hit.getR(), currentR)).collect(Collectors.toList());
     }
 
@@ -43,9 +42,8 @@ public class Table implements Serializable {
     }
 
     public void clear() {
-        hitsRepository.clearTable();
-        hitList.clear();
+        hitsDAO.clearTable();
+        hitList = new ArrayList<>();
     }
-
 
 }

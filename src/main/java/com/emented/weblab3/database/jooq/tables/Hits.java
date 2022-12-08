@@ -4,9 +4,9 @@
 package com.emented.weblab3.database.jooq.tables;
 
 
-import com.emented.weblab3.database.jooq.tables.records.HitsRecord;
 import com.emented.weblab3.database.jooq.Keys;
 import com.emented.weblab3.database.jooq.S336189;
+import com.emented.weblab3.database.jooq.tables.records.HitsRecord;
 
 import java.time.OffsetDateTime;
 import java.util.function.Function;

@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="css/index.css"/>
 
     <script src="js/timezoneSetter.js"/>
-    <script src="js/radiusWorker.js"/>
     <script src="js/lengthLimiter.js"/>
     <script src="js/clickCalculator.js"/>
     <script src="js/initializer.js"/>
@@ -31,8 +30,11 @@
         <tr>
             <td class="header" colspan="3">
                 emented
-                1514
+                1214
                 P32121
+                <h:link outcome="goToMain">
+                    Start page
+                </h:link>
             </td>
         </tr>
         <tr>
@@ -160,6 +162,10 @@
                         #{hitResult.status == true ? "YES" : "NO"}
                     </h:column>
                 </h:dataTable>
+                <h:commandButton id="reset" value="Clear table"
+                                 action="#{table.clear()}">
+                    <f:ajax render="graph result_table"/>
+                </h:commandButton>
             </td>
         </tr>
         </tbody>

@@ -1,4 +1,4 @@
-package com.emented.weblab3.repository;
+package com.emented.weblab3.DAO;
 
 import com.emented.weblab3.DTO.HitDTO;
 import com.emented.weblab3.database.LocalDatabaseConnectionProvider;
@@ -21,7 +21,7 @@ import java.util.List;
 @Data
 @ManagedBean
 @ApplicationScoped
-public class JooqHitsRepository implements HitsRepository {
+public class JooqHitsDAO implements HitsDAO {
 
     @ManagedProperty("#{localDatabaseConnectionProvider}")
     private LocalDatabaseConnectionProvider localDatabaseConnectionProvider;
