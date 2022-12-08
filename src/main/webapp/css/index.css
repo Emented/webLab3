@@ -1,0 +1,207 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #dedede;
+    height: 100%;
+}
+
+.wrapper {
+    text-align: center;
+    width: 100%;
+    border-spacing: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 0;
+    vertical-align: top;
+}
+
+.wrapper tr td {
+    vertical-align: top;
+}
+
+.header {
+    text-align: left;
+    background-color: #ff9400;
+    font-family: monospace;
+    font-size: 200%;
+    font-weight: 700;
+    padding: 4px;
+}
+
+.horizontal-separator {
+    height: 30px;
+}
+
+.plot {
+    padding: 0 20px 20px 20px;
+}
+
+.plot svg {
+    padding: 20px;
+    width: 350px;
+    height: 350px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.plot line, path, polygon {
+    stroke: rgba(0, 0, 0, 0.92);
+    fill: #ff9400;
+    font-size: 10px;
+}
+
+.plot text {
+    opacity: 1;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.user_input form {
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+}
+
+.plot svg:hover {
+    cursor: crosshair;
+}
+
+.values {
+    margin: 0;
+    width: 100%;
+    font-size: 18px;
+}
+
+.values tr td {
+    vertical-align: middle;
+}
+
+.x_value td , .y_value td, .r_value td, .buttons td {
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+}
+
+.btn_group {
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+.validation_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.table {
+    padding: 0 20px 20px 20px;
+}
+
+.table table {
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+    border: 2px solid;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.table table thead {
+    background-color: #ff9400;
+    border: 2px solid black;
+    height: 50px;
+}
+
+.table table tfoot {
+    text-align: right;
+}
+
+.reset-table {
+    margin: 6px 4px 2px 0;
+}
+
+.selected {
+    background-color: #ff9400 !important;
+}
+
+.selected:hover {
+    background-color: #ff7a00 !important;
+}
+
+.error {
+    border-radius: 4px;
+    border: 2px solid black;
+    background-color: #ff9400;
+    position: relative;
+    animation: shake .1s linear;
+    animation-iteration-count: 5;
+}
+
+input[type="submit"] {
+    width: 90%;
+    height: 30px;
+    margin-left: 3%;
+    font-size: 16px;
+    background-color: #ff9400;
+    border-radius: 4px;
+    border: 2px solid black;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff7a00;
+}
+
+input[type="reset"] {
+    font-size: 16px;
+    background-color: #8399ae;
+    border-radius: 4px;
+    border: 2px solid black;
+}
+
+input[type="reset"]:hover {
+    background-color: #6d8694;
+}
+
+[type="text"] {
+    width: 100%;
+}
+
+@keyframes shake {
+    0% {
+        left: -1px;
+    }
+    100% {
+        right: -1px;
+    }
+}
+
+.ui-slider {
+    text-align: center;
+    background: #16161dAA !important;
+    height: 5px !important;
+}
+
+.ui-slider-handle {
+    background: #16161dFA !important;
+    border: 1px solid #16161dFA !important;
+}
+
+.ui-slider-range {
+    background: #16161dAA !important;
+}
+
+svg circle {
+    stroke: black;
+}
+
+svg .green {
+    fill: green;
+}
+
+svg .red {
+    fill: red;
+}
