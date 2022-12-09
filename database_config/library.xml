@@ -3,9 +3,9 @@
     <!-- Configure the database connection here -->
     <jdbc>
         <driver>org.postgresql.Driver</driver>
-        <url>jdbc:postgresql://pg:5432/studs</url>
-        <user>s336189</user>
-        <password>MRCr5hGKzN3TVdUx</password>
+        <url>jdbc:postgresql://localhost:5432/weblab3</url>
+        <user>postgres</user>
+        <password>postgres</password>
     </jdbc>
 
     <generator>

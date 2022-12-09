@@ -1,7 +1,7 @@
 package com.emented.weblab3.DAO;
 
 import com.emented.weblab3.DTO.HitDTO;
-import com.emented.weblab3.database.LocalDatabaseConnectionProvider;
+import com.emented.weblab3.database.ConnectionProvider;
 import com.emented.weblab3.database.jooq.Tables;
 import com.emented.weblab3.service.SessionIdGetter;
 import lombok.Data;
@@ -24,29 +24,31 @@ import java.util.List;
 public class JooqHitsDAO implements HitsDAO {
 
     @ManagedProperty("#{localDatabaseConnectionProvider}")
-    private LocalDatabaseConnectionProvider localDatabaseConnectionProvider;
+    private ConnectionProvider connectionProvider;
 
     @ManagedProperty("#{sessionIdGetterImpl}")
     private SessionIdGetter sessionIdGetter;
 
     @Override
-    public void clearTable() {
-        try (Connection connection = localDatabaseConnectionProvider.getConnection()) {
+    public Integer clearTable() {
+        try (Connection connection = connectionProvider.getConnection()) {
 
             DSLContext dslContext = DSL.using(connection, SQLDialect.POSTGRES);
-            dslContext.delete(Tables.HITS)
+
+            return dslContext.delete(Tables.HITS)
                     .where(Tables.HITS.SESSION_ID
                             .eq(sessionIdGetter.getCurrentSessionId()))
                     .execute();
-
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
+
+        return -1;
     }
 
     @Override
     public List<HitDTO> findAll() {
-        try (Connection connection = localDatabaseConnectionProvider.getConnection()) {
+        try (Connection connection = connectionProvider.getConnection()) {
 
             DSLContext dslContext = DSL.using(connection, SQLDialect.POSTGRES);
             return dslContext.select()
@@ -65,14 +67,14 @@ public class JooqHitsDAO implements HitsDAO {
 
     @Override
     public Integer save(HitDTO hit) {
-        try (Connection connection = localDatabaseConnectionProvider.getConnection()) {
+        try (Connection connection = connectionProvider.getConnection()) {
 
             DSLContext dslContext = DSL.using(connection, SQLDialect.POSTGRES);
             return dslContext.insertInto(Tables.HITS)
                     .set(dslContext.newRecord(Tables.HITS, hit))
                     .returning(Tables.HITS.ID)
                     .fetchOptional()
-                    .orElseThrow(() -> new DataAccessException("Error"))
+                    .orElseThrow(() -> new DataAccessException("Error adding new record!"))
                     .get(Tables.HITS.ID);
 
         } catch (SQLException sqlException) {

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface HitsDAO {
 
-    void clearTable();
+    Integer clearTable();
     List<HitDTO> findAll();
     Integer save(HitDTO hit);
 

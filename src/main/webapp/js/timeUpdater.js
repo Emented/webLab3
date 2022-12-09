@@ -1,7 +1,9 @@
 $(function () {
-    const DELAY = 5000;
+    const UPDATE_DELAY = 5000;
 
-    function setDate(date) {
+    function setCurrentDateTime() {
+        let date = new Date();
+
         let day = date.getDate();
         let month = date.getMonth() + 1;
         let year = date.getFullYear();
@@ -9,10 +11,6 @@ $(function () {
         day = (day < 10) ? '0' + day : day;
         month = (month < 10) ? '0' + month : month;
 
-        $('.datetime_date').html(`${day}.${month}.${year}`);
-    }
-
-    function setTime(date) {
         let hours = date.getHours();
         let minutes = date.getMinutes();
         let seconds = date.getSeconds();
@@ -21,15 +19,10 @@ $(function () {
         minutes = (minutes < 10) ? '0' + minutes : minutes;
         seconds = (seconds < 10) ? '0' + seconds : seconds;
 
+        $('.datetime_date').html(`${day}.${month}.${year}`);
         $('.datetime_time').html(`${hours}:${minutes}:${seconds}`);
     }
 
-    function setCurrentDateTime() {
-        let date = new Date();
-        setDate(date);
-        setTime(date);
-    }
-
     setCurrentDateTime();
-    setInterval(setCurrentDateTime, DELAY);
+    setInterval(setCurrentDateTime, UPDATE_DELAY);
 });
